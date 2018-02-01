@@ -1,0 +1,34 @@
+This is a pre maven project. So it's a bit tricky
+
+Step 1: Build the JARS
+
+1. CRITICAL: Change impl_version in build.xml 
+
+(add another 9 to end for each version. So 1.9.9 originally, then 1.9.99, 1.9.999, etc)
+(This way we keep it as high as possible, but don't change version numbers to 2.x)
+
+2. Install ant (brew install ant on a mac)
+3. run "ant all".
+4. Verify Files appear in build
+
+-  we care about jackson-mapper-asl-<version>.jar and jackson-core-asl-<version>.jar
+
+STEP 2: Deploy
+
+1. Go to the mavenize directory
+2. type "./try.sh <version>"
+
+CRITICAL: Must be same version as specified in STEP 1. There is very little error checking
+
+3. Version will be restamped on the two dummy poms.
+4. JARS will be copied from ../build
+5. Jars and POM will be deployed to artifactory
+
+
+STEP 3: Test!
+
+Test the code. Do the new dependencies resolve. Does everything work
+
+STEP 4: Update Parent POM
+
+
